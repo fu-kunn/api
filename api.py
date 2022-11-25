@@ -15,4 +15,5 @@ params = {
 
 res = requests.get(URL, params)
 result = res.json()
-print(result['results'])
+items = result['results']['shop']
+print(len(items))
