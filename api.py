@@ -10,7 +10,10 @@ API_KEY = os.environ.get('KEY')
 params = {
   'key': API_KEY,
   'keyword': '沖縄',
+  # 'format': 'json'
 }
 
 res = requests.get(URL, params)
-print(res.status_code)
+# result = res.json()
+result = res.text
+print(result)
