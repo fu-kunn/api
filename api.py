@@ -19,4 +19,5 @@ result = res.json()
 items = result['results']['shop']
 df = pd.DataFrame(items)
 df = df[['name', 'address', 'wifi']]
-print(df.head())
+df.to_csv('hotpepper.csv', index=False)
+# print(df.head())
