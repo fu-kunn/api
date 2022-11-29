@@ -18,5 +18,5 @@ res = requests.get(URL, params)
 result = res.json()
 items = result['results']['shop']
 df = pd.DataFrame(items)
-# print(df.head())
-print(df.columns)
+df = df[['name', 'address', 'wifi']]
+print(df.head())
