@@ -11,4 +11,6 @@ params = {
 }
 
 res = requests.get(REQUEST_URL, params)
-print(res.status_code)
+result = res.json()
+items = result['Items']
+print(len(items))
