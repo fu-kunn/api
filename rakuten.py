@@ -20,4 +20,5 @@ columns = ['itemName', 'shopName', 'itemPrice', 'availability']
 df = df[columns]
 new_columns = ['商品名', '店名', '商品価格', '販売可']
 df.columns = new_columns
-print(df[:3])
+# print(df.dtypes)
+print(df.sort_values('商品価格', ascending = False))
