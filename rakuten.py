@@ -15,4 +15,9 @@ result = res.json()
 items = result['Items']
 items = [item['Item'] for item in items]
 df = pd.DataFrame(items)
-df[:3]
+
+columns = ['itemName', 'shopName', 'itemPrice', 'availability']
+df = df[columns]
+new_columns = ['商品名', '店名', '商品価格', '販売可']
+df.columns = new_columns
+print(df[:3])
