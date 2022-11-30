@@ -13,4 +13,6 @@ params = {
 res = requests.get(REQUEST_URL, params)
 result = res.json()
 items = result['Items']
-print(items[0])
+items = [item['Item'] for item in items]
+df = pd.DataFrame(items)
+df[:3]
