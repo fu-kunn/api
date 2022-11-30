@@ -21,4 +21,11 @@ df = df[columns]
 new_columns = ['商品名', '店名', '商品価格', '販売可']
 df.columns = new_columns
 # print(df.dtypes)
-print(df.sort_values('商品価格', ascending = False))
+# print(df.sort_values('商品価格', ascending = True))
+## decendingは使えない
+
+# print(df.describe())
+df[df['商品価格'] > 50000]
+
+
+print(df[df['商品価格'] > 50000])
