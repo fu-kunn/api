@@ -3,6 +3,7 @@ import pandas as pd
 
 from google.oauth2.service_account import Credentials
 from gspread_dataframe import set_with_dataframe
+from gspread_formatting import *
 
 scopes = [
     'https://www.googleapis.com/auth/spreadsheets',
@@ -50,5 +51,22 @@ first_row = 2
 first_col = 2
 set_with_dataframe(new_worksheet, pvt_table.reset_index(), row=first_row, col=first_col)
 
+# 書式設定
+header_range = 'B2:C2'
+index_range = 'B3:B8'
+value_range = 'C3:C8'
 
-# print(new_worksheet)
+# ヘッダーの背景色、文字色
+header_fmt = cellFormat(
+    backgroundColor = color(38/255, 166/255, 154/255),
+    textFormat = textFormat(bold=True, foregroundColor=color(255/255, 255/255, 255/255)),
+    horizontalAlignment = 'CENTER'
+)
+format_cell_range(new_worksheet, header_range, header_fmt)
+
+# 枠線
+border = Border("SOLID", Color(0, 0, 0, 0))
+fmt = CellFormat(borders = Borders(top=border, bottom=border, left=border, right=border))
+format_cell_range(new_worksheet, header_range, fmt)
+format_cell_range(new_worksheet, index_range, fmt)
+format_cell_range(new_worksheet, value_range, fmt)
