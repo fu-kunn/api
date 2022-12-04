@@ -26,8 +26,22 @@ sh = gc.open_by_key(SP_SHEET_KEY)
 worksheet = sh.worksheet(SP_SHEET)
 data = worksheet.get_all_values()
 df = pd.DataFrame(data[2:], columns=data[1])
+# １列目の余白を削除
 df = df.drop(df.columns[[0]], axis=1)
 # 縦横のカラム数を返す
 test = df.shape
+# print(test)
+
+"""
+所属毎の年齢を算出する方法
+"""
+# データ型の変換object→int
+df = df.astype({'年齢': int, '社員ID': int})
+# mean=平均
+pvt_table = df.pivot_table(index=['所属'], values=['年齢'], aggfunc='mean')
+# 少数の丸め込み
+pvt_table = pvt_table['年齢'].round()
+print(pvt_table)
+
 # print(df)
-print(test)
+
