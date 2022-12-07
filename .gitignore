@@ -2,3 +2,5 @@
 /.env
 
 secret.json
+gmail_cred.json
+gmail.json
